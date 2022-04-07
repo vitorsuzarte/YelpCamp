@@ -18,6 +18,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -49,7 +50,17 @@ app.get('/campgrounds/:id/edit', async (req, res) => {
     res.render('campgrounds/edit', { campground })
 })
 
+app.put('/campgrounds/:id', async (req, res) => {
+    const { id } = req.params;
+    const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground })
+    res.redirect(`/campgrounds/${campground.id}`)
+})
 
+app.delete('/campgrounds/:id', async (req, res) => {
+    const { id } = req.params;
+    const campground = await Campground.findByIdAndDelete(id);
+    res.redirect(`/campgrounds`);
+})
 
 app.listen(8080, () => {
     console.log('Serving on port 8080')

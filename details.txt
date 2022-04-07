@@ -1,0 +1,24 @@
+
+
+* Rotina para iniciar o banco de dados
+	1 - PowerShell --> run mongod
+	2 - PowerShell --> run mongo 
+	3 - terminal inside the proj folder --> run nodemon 'nome_do_arquivo'
+
+__ MONGO __ 
+
+
+__ EXPRESS __
+	- Definir as rotas da aplicação
+	- Explorar parametros (req e res) no console do chrome para trafegar com os dados que gostaria
+	- A ordem das rotas no código importa!! Ex: uma rota get(/produto/:id) antes de uma rota get(/produto/novo) 
+	  faz com que a palavra 'novo' seja tratada como um id, ou seja, a segunda rota fica inacessível por conta da primeira
+	  rota
+
+__ EJS __
+
+________________________________________________DUVIDAS YELPCAMP________________________________________
+
+1)
+	const {id} = req.params ---> relembrar o que isso faz mesmo
+	spread operator (...req.body.campground) ---> relembrar o uso exato do oeprador
